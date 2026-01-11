@@ -32,8 +32,8 @@
                     <li><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="nav-buttons">
-                    <button class="btn btn-secondary">Sign In</button>
-                    <button class="btn btn-primary">Get Started</button>
+                    <a href="{% url 'login' %}" class="btn btn-secondary">Sign In</a>
+                    <a href="{% url 'signup' %}" class="btn btn-primary">Get Started</a>
                 </div>
                 <button class="hamburger" id="hamburger">
                     <span></span>
@@ -66,12 +66,12 @@
                         and making healthcare accessible to everyone.
                     </p>
                     <div class="hero-buttons">
-                        <button class="btn btn-primary btn-large">
+                        <a href="{% url 'signup' %}" class="btn btn-primary btn-large">
                             Get Started
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                                 <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                        </button>
+                        </a>
                         <button class="btn btn-outline btn-large">
                             Watch Demo
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -326,7 +326,7 @@
                     Join thousands of patients and providers already using Care to improve healthcare delivery
                 </p>
                 <div class="cta-buttons">
-                    <button class="btn btn-primary btn-large">Get Started Free</button>
+                    <a href="{% url 'signup' %}" class="btn btn-primary btn-large">Get Started Free</a>
                     <button class="btn btn-outline btn-large">Schedule a Demo</button>
                 </div>
             </div>
