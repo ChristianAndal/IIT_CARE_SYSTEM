@@ -1,0 +1,260 @@
+{% extends 'Dashboard/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard - Care{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <!-- Welcome Section -->
+    <div class="dashboard-welcome">
+        <div class="welcome-content">
+            <h1 class="welcome-title">Welcome back, {% if user.is_authenticated %}{{ user.get_full_name|default:user.username }}{% else %}Guest{% endif %}!</h1>
+            <p class="welcome-subtitle">Here's what's happening with your healthcare today.</p>
+        </div>
+        <div class="welcome-actions">
+            <button class="btn btn-primary">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 4V10M10 10V16M10 10H16M10 10H4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                New Appointment
+            </button>
+        </div>
+    </div>
+    
+    <!-- Stats Cards -->
+    <div class="dashboard-stats">
+        <div class="stat-card">
+            <div class="stat-icon stat-icon-primary">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L2 17L12 22L22 17L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-value">24</div>
+                <div class="stat-label">Today's Appointments</div>
+                <div class="stat-change positive">+12% from yesterday</div>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon stat-icon-success">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L2 17L12 22L22 17L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-value">156</div>
+                <div class="stat-label">Active Patients</div>
+                <div class="stat-change positive">+8 this week</div>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon stat-icon-warning">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L2 17L12 22L22 17L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-value">7</div>
+                <div class="stat-label">Pending Prescriptions</div>
+                <div class="stat-change negative">-3 from yesterday</div>
+            </div>
+        </div>
+        
+        <div class="stat-card">
+            <div class="stat-icon stat-icon-info">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7L2 17L12 22L22 17L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="stat-content">
+                <div class="stat-value">42</div>
+                <div class="stat-label">Lab Results Ready</div>
+                <div class="stat-change positive">+5 new today</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content Grid -->
+    <div class="dashboard-grid">
+        <!-- Recent Appointments -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h2 class="card-title">Recent Appointments</h2>
+                <a href="#" class="card-link">View all</a>
+            </div>
+            <div class="card-content">
+                <div class="appointment-list">
+                    <div class="appointment-item">
+                        <div class="appointment-time">09:00 AM</div>
+                        <div class="appointment-details">
+                            <div class="appointment-name">Dr. Sarah Johnson</div>
+                            <div class="appointment-type">General Checkup</div>
+                        </div>
+                        <div class="appointment-status status-confirmed">Confirmed</div>
+                    </div>
+                    <div class="appointment-item">
+                        <div class="appointment-time">11:30 AM</div>
+                        <div class="appointment-details">
+                            <div class="appointment-name">Dr. Michael Chen</div>
+                            <div class="appointment-type">Cardiology Consultation</div>
+                        </div>
+                        <div class="appointment-status status-pending">Pending</div>
+                    </div>
+                    <div class="appointment-item">
+                        <div class="appointment-time">02:00 PM</div>
+                        <div class="appointment-details">
+                            <div class="appointment-name">Dr. Emily Rodriguez</div>
+                            <div class="appointment-type">Follow-up Visit</div>
+                        </div>
+                        <div class="appointment-status status-confirmed">Confirmed</div>
+                    </div>
+                    <div class="appointment-item">
+                        <div class="appointment-time">04:15 PM</div>
+                        <div class="appointment-details">
+                            <div class="appointment-name">Dr. James Wilson</div>
+                            <div class="appointment-type">Dermatology</div>
+                        </div>
+                        <div class="appointment-status status-cancelled">Cancelled</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quick Actions -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h2 class="card-title">Quick Actions</h2>
+            </div>
+            <div class="card-content">
+                <div class="quick-actions">
+                    <button class="quick-action-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 4V10M12 10V16M12 10H18M12 10H6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>New Patient</span>
+                    </button>
+                    <button class="quick-action-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 12L9 4L9 12L21 12L21 20L3 20L3 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Schedule</span>
+                    </button>
+                    <button class="quick-action-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M2 6H22M2 10H22M2 14H18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>Prescription</span>
+                    </button>
+                    <button class="quick-action-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 8V12L15 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>Lab Request</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Recent Activity -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h2 class="card-title">Recent Activity</h2>
+                <a href="#" class="card-link">View all</a>
+            </div>
+            <div class="card-content">
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon activity-icon-success">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M13 4L6 11L3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-text">New lab results received</div>
+                            <div class="activity-time">2 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon activity-icon-info">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-text">Appointment confirmed for tomorrow</div>
+                            <div class="activity-time">1 hour ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon activity-icon-warning">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 4V8M8 12H8.01" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-text">Prescription refill reminder</div>
+                            <div class="activity-time">3 hours ago</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon activity-icon-primary">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <path d="M8 2L2 5L2 11L8 14L14 11L14 5L8 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="activity-content">
+                            <div class="activity-text">Medical record updated</div>
+                            <div class="activity-time">5 hours ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Upcoming Events -->
+        <div class="dashboard-card">
+            <div class="card-header">
+                <h2 class="card-title">Upcoming Events</h2>
+                <a href="#" class="card-link">View calendar</a>
+            </div>
+            <div class="card-content">
+                <div class="events-list">
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">15</div>
+                            <div class="event-month">Jan</div>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-title">Team Meeting</div>
+                            <div class="event-time">10:00 AM - 11:00 AM</div>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">18</div>
+                            <div class="event-month">Jan</div>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-title">Training Session</div>
+                            <div class="event-time">02:00 PM - 04:00 PM</div>
+                        </div>
+                    </div>
+                    <div class="event-item">
+                        <div class="event-date">
+                            <div class="event-day">22</div>
+                            <div class="event-month">Jan</div>
+                        </div>
+                        <div class="event-details">
+                            <div class="event-title">Monthly Review</div>
+                            <div class="event-time">09:00 AM - 12:00 PM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
